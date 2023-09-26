@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Manipulation Example</title>
+  </head>
+  <body>
+    <h1>To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Add a new task" />
+    <button id="addTaskButton">Add Task</button>
+
+    <ul id="taskList">
+      <!-- Tasks will be added here -->
+    </ul>
+
+    <script>
+      // Function to add a new task
+      function addTask() {
+        const taskInput = document.getElementById("taskInput");
+        const taskText = taskInput.value.trim();
+        const taskList = document.getElementById("taskList");
+        const addTaskButton = document.getElementById("addTaskButton");
+
+        if (taskText !== "") {
+          const taskItem = document.createElement("li");
+          taskItem.textContent = taskText;
+
+          // Add a delete button to each task
+          const deleteButton = document.createElement("button");
+          deleteButton.textContent = "Delete";
+          deleteButton.addEventListener("click", () => {
+            taskItem.remove();
+          });
+
+          taskItem.appendChild(deleteButton);
+          taskList.appendChild(taskItem);
+
+          // Clear the input field
+          taskInput.value = "";
+        }
+      }
+
+      // Add task when the button is clicked
+      addTaskButton.addEventListener("click", addTask);
+
+      // Add task when Enter key is pressed in the input field
+      taskInput.addEventListener("keyup", (event) => {
+        if (event.key === "Enter") {
+          addTask();
+        }
+      });
+    </script>
+  </body>
+</html>

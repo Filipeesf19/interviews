@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./index.css";
 import Exercise1 from "./Exercises/01-display-string";
 import Exercise2 from "./Exercises/02-display-array";
@@ -16,9 +17,14 @@ import Exercise12 from "./Exercises/12-adding-and-deleting-items-from-list";
 import Exercise13 from "./Exercises/13-data-fetching-axios-memoization";
 import Exercise14 from "./Exercises/14-Counter-with-react-redux-toolkit";
 import Exercise15 from "./Exercises/15-performance-improvement";
+import Exercise16 from "./Exercises/16- react-query-and-use-mutation";
+
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Exercise15 />
+    <QueryClientProvider client={queryClient}>
+      <Exercise16 />
+    </QueryClientProvider>
   </React.StrictMode>
 );

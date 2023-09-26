@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event Handling Example</title>
+  </head>
+  <body>
+    <h1>Event Handling</h1>
+    <button id="clickButton">Click Me</button>
+    <input type="text" id="textInput" placeholder="Type something" />
+
+    <p id="output">Event results will be displayed here.</p>
+
+    <script>
+      const clickButton = document.getElementById("clickButton");
+      const textInput = document.getElementById("textInput");
+      const output = document.getElementById("output");
+
+      textInput.addEventListener("keyup", handleTextInput); // Add a keyup event listener to the text input
+      clickButton.addEventListener("click", handleClick); // Add a click event listener to the button
+
+      // Function to handle button click event
+      function handleClick() {
+        output.textContent = "Button was clicked!";
+      }
+      // Function to handle text input event
+      function handleTextInput() {
+        const inputValue = textInput.value;
+        output.textContent = `You typed: ${inputValue}`;
+      }
+    </script>
+  </body>
+</html>
